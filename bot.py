@@ -1,5 +1,6 @@
 import asyncio
 from telethon import TelegramClient
+from telethon.sessions import MemorySession
 from telethon.errors import FloodWaitError, ChatWriteForbiddenError, RPCError
 from datetime import datetime
 
@@ -32,7 +33,7 @@ TARGET_GROUPS = [
 DELAY = 3600
 PAUSE_BETWEEN = 30
 
-client = TelegramClient("session_repeat", api_id, api_hash)
+client = TelegramClient(MemorySession(), api_id, api_hash)
 
 def get_time():
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
